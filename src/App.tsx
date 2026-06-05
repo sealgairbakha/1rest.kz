@@ -18,6 +18,7 @@ import {
   X,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import logo from './assets/1rest_logo.png'
 import './App.css'
 
 const phone = '+7 700 000 00 00'
@@ -101,11 +102,7 @@ function App() {
     <div className="site-shell">
       <header className="header">
         <a className="brand" href="#top" aria-label="1REST.KZ">
-          <span className="brand-mark">1R</span>
-          <span>
-            <strong>1REST.KZ</strong>
-            <small>чистка вытяжек и вентиляции</small>
-          </span>
+          <img className="brand-logo" src={logo} alt="1REST.KZ" />
         </a>
 
         <button
