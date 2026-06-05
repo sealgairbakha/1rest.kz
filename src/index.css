@@ -11,10 +11,21 @@
     sans-serif;
   color: var(--soft-ink);
   background: var(--page);
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='light'] {
+  --page: #ffffff;
+  --ink: #0b0b0b;
+  --soft-ink: #333333;
+  --muted: #686868;
+  --line: #e7e7e7;
+  --surface: #ffffff;
+  color-scheme: light;
 }
 
 * {

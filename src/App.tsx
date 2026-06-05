@@ -9,9 +9,11 @@ import {
   Mail,
   MapPin,
   Menu,
+  Moon,
   Phone,
   ShieldCheck,
   Sparkles,
+  Sun,
   Wrench,
   X,
 } from 'lucide-react'
@@ -56,8 +58,20 @@ const workflow = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window === 'undefined') {
+      return 'dark'
+    }
+
+    return localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+  })
 
   const closeMenu = () => setMenuOpen(false)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const animatedItems = document.querySelectorAll(
@@ -110,6 +124,16 @@ function App() {
           <a href="#process" onClick={closeMenu}>Как работаем</a>
           <a href="#contacts" onClick={closeMenu}>Контакты</a>
         </nav>
+
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-label={theme === 'dark' ? 'Включить светлую тему' : 'Включить темную тему'}
+          onClick={() => setTheme((value) => (value === 'dark' ? 'light' : 'dark'))}
+          title={theme === 'dark' ? 'Светлая тема' : 'Темная тема'}
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
 
         <a className="header-phone" href={`tel:${phone.replaceAll(' ', '')}`}>
           <Phone size={18} />
