@@ -513,6 +513,83 @@ h3 {
   margin: 44px 0 0;
 }
 
+.certificates-section {
+  border-top: 1px solid var(--line);
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.cert-card,
+.credential-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.cert-card {
+  display: flex;
+  min-height: 290px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.cert-card svg,
+.credential-card svg {
+  color: var(--accent);
+  flex: none;
+}
+
+.cert-card span,
+.credential-card span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.cert-card h3 {
+  max-width: 420px;
+  margin: 38px 0 0;
+  font-size: 34px;
+  line-height: 1.08;
+}
+
+.credentials-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.credential-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  min-height: 136px;
+  padding: 24px;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.cert-card:hover,
+.credential-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(249, 115, 22, 0.38);
+  box-shadow: 0 18px 48px rgba(11, 11, 11, 0.08);
+}
+
+.credential-card h3 {
+  margin: 8px 0 0;
+  font-size: 24px;
+}
+
 .cta-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
@@ -710,6 +787,7 @@ h3 {
   .hero-section,
   .split-section,
   .evidence-section,
+  .certificates-grid,
   .cta-section {
     grid-template-columns: 1fr;
   }
@@ -725,6 +803,7 @@ h3 {
 
   .trust-strip,
   .service-grid,
+  .credentials-list,
   .timeline {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -794,6 +873,7 @@ h3 {
 
   .trust-strip,
   .service-grid,
+  .credentials-list,
   .timeline {
     grid-template-columns: 1fr;
   }
@@ -814,9 +894,16 @@ h3 {
 
   .service-card,
   .object-list article,
+  .cert-card,
+  .credential-card,
   .timeline article {
     min-height: auto;
     padding: 22px;
+  }
+
+  .cert-card h3 {
+    margin-top: 32px;
+    font-size: 28px;
   }
 
   .timeline h3 {

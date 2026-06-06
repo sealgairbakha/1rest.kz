@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  Award,
   BadgeCheck,
   Building2,
   Camera,
@@ -8,6 +9,7 @@ import {
   Clock3,
   FlaskConical,
   Flame,
+  HardHat,
   Mail,
   MapPin,
   Menu,
@@ -100,6 +102,13 @@ const workflow = [
   'Сборка, проверка тяги, фотоотчет и предоставление документации',
 ]
 
+const credentials = [
+  'Высотные работы',
+  'Пожарная безопасность',
+  'Электробезопасность',
+  'Пром без',
+]
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -119,7 +128,7 @@ function App() {
 
   useEffect(() => {
     const animatedItems = document.querySelectorAll(
-      '.section-heading, .service-card, .split-section > div, .object-list article, .evidence-media, .evidence-copy, .timeline article, .cta-section > div',
+      '.section-heading, .service-card, .split-section > div, .object-list article, .evidence-media, .evidence-copy, .timeline article, .cert-card, .credential-card, .cta-section > div',
     )
 
     animatedItems.forEach((item) => item.classList.add('reveal'))
@@ -341,6 +350,37 @@ function App() {
                 <h3>{item}</h3>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="section certificates-section" id="certificates">
+          <div className="section-heading">
+            <p className="eyebrow">Документы</p>
+            <h2>Сертификаты и удостоверения компании</h2>
+            <p>
+              Подтверждаем подготовку специалистов и соблюдение требований безопасности
+              для работ на коммерческих, производственных и частных объектах.
+            </p>
+          </div>
+
+          <div className="certificates-grid">
+            <article className="cert-card">
+              <Award size={30} />
+              <span>Сертификат</span>
+              <h3>Безопасность и Охрана труда</h3>
+            </article>
+
+            <div className="credentials-list" aria-label="Удостоверения компании">
+              {credentials.map((item) => (
+                <article className="credential-card" key={item}>
+                  <HardHat size={22} />
+                  <div>
+                    <span>Корочка</span>
+                    <h3>{item}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
