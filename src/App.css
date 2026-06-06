@@ -312,6 +312,16 @@ h3 {
   font-size: 18px;
 }
 
+.service-note {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border: 1px solid rgba(249, 115, 22, 0.38);
+  border-radius: 8px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  font-weight: 750;
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -319,6 +329,8 @@ h3 {
 }
 
 .service-card {
+  display: flex;
+  flex-direction: column;
   min-height: 250px;
   padding: 28px;
   border: 1px solid var(--line);
@@ -353,6 +365,63 @@ h3 {
 .service-card p,
 .object-list p {
   color: var(--muted);
+}
+
+.service-details {
+  margin-top: auto;
+}
+
+.service-details[open] {
+  margin-top: 18px;
+}
+
+.service-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 850;
+  list-style: none;
+}
+
+.service-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.service-toggle svg {
+  transition: transform 220ms ease;
+}
+
+.service-details[open] .service-toggle svg {
+  transform: rotate(180deg);
+}
+
+.show-less,
+.service-details[open] .show-more {
+  display: none;
+}
+
+.service-details[open] .show-less {
+  display: inline;
+}
+
+.service-details-body {
+  padding-top: 12px;
+}
+
+.service-details-body ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--soft-ink);
+}
+
+.service-details-body li + li {
+  margin-top: 10px;
 }
 
 .split-section {

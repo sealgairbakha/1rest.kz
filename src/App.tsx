@@ -3,30 +3,41 @@ import {
   BadgeCheck,
   Building2,
   Camera,
+  ChevronDown,
   CheckCircle2,
   Clock3,
+  FlaskConical,
   Flame,
   Mail,
   MapPin,
   Menu,
   Moon,
   Phone,
+  Settings2,
   ShieldCheck,
   Sparkles,
   Sun,
   Wrench,
   X,
 } from 'lucide-react'
+import type { ComponentType } from 'react'
 import { useEffect, useState } from 'react'
 import logoDark from './assets/1rest_logo_ForDarkTheme.png'
 import logoLight from './assets/1rest_logo.png'
 import './App.css'
 
+type Service = {
+  icon: ComponentType<{ size?: number }>
+  title: string
+  text: string
+  details?: string[]
+}
+
 const phone = '+7 777 122 90 87'
 const whatsapp = '77771229087'
-const email = 'info@1rest.kz'
+const email = '1rest.kz@gmail.com'
 
-const services = [
+const services: Service[] = [
   {
     icon: Sparkles,
     title: 'Кухонные вытяжки',
@@ -42,6 +53,37 @@ const services = [
     title: 'Дымоходы',
     text: 'Очистка сажи, налета и засоров для печей, котельных, тандыров, мангалов и каминных систем.',
   },
+  {
+    icon: Settings2,
+    title: 'Аппарат «гибкий вал»',
+    text: 'Профессиональное оборудование для глубокой механической чистки воздуховодов.',
+    details: [
+      'Оборудование сертифицировано и предназначено для профессионального использования в пищевой и промышленной сферах.',
+      'Эффективно удаляет загрязнения, не повреждая внутренние поверхности воздуховодов.',
+      'Аппарат прошел необходимые испытания и соответствует требованиям безопасности.',
+    ],
+  },
+  {
+    icon: FlaskConical,
+    title: 'Cooky Smoke и Cooky Stuff',
+    text: 'Химические средства для удаления жировых и пылевых загрязнений в вытяжных системах.',
+    details: [
+      'Специально разработаны для чистки вытяжных систем на объектах общественного питания.',
+      'Безопасны для применения в пищевой промышленности и на кухнях с ежедневной загрузкой.',
+      'Имеют необходимые сертификаты, подтверждающие соответствие санитарно-эпидемиологическим нормам.',
+      'Не воспламеняются и не являются пожароопасными, что важно для объектов с повышенными требованиями к пожарной безопасности.',
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Гарантия качества и безопасности',
+    text: 'Работы выполняют подготовленные специалисты с опытом обслуживания подобных систем.',
+    details: [
+      'Специалисты проходят обучение и работают с системами вентиляции, вытяжек и дымоходов.',
+      'Используем только проверенное оборудование и материалы.',
+      'Контролируем качество выполнения работ, чтобы гарантировать безопасность и стабильный результат.',
+    ],
+  },
 ]
 
 const advantages = [
@@ -52,10 +94,10 @@ const advantages = [
 ]
 
 const workflow = [
-  'Осмотр и оценка доступа',
-  'Защита рабочей зоны',
-  'Чистка каналов, зонтов и фильтров',
-  'Сборка, проверка тяги и фотоотчет',
+  'Осмотр, оценка доступа и согласование объема работ',
+  'Защита рабочей зоны и монтажные работы',
+  'Чистка каналов, зонтов, жироуловителей и двигателей',
+  'Сборка, проверка тяги, фотоотчет и предоставление документации',
 ]
 
 function App() {
@@ -198,6 +240,10 @@ function App() {
               Чем больше жира, сажи и пыли внутри системы, тем слабее тяга и выше
               риск возгорания. Мы приводим систему в рабочее состояние и показываем результат.
             </p>
+            <div className="service-note">
+              Все оборудование и химические средства, которые мы используем, безопасны
+              и соответствуют строгим стандартам.
+            </div>
           </div>
 
           <div className="service-grid">
@@ -208,6 +254,22 @@ function App() {
                   <Icon size={28} />
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
+                  {service.details && (
+                    <details className="service-details">
+                      <summary className="service-toggle">
+                        <span className="show-more">Развернуть</span>
+                        <span className="show-less">Скрыть</span>
+                        <ChevronDown size={18} />
+                      </summary>
+                      <div className="service-details-body">
+                        <ul>
+                          {service.details.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </details>
+                  )}
                 </article>
               )
             })}
@@ -227,8 +289,8 @@ function App() {
           <div className="object-list">
             {[
               ['HoReCa', 'рестораны, бары, кофейни, фуд-корты'],
-              ['Производство', 'цеха, пекарни, столовые, кейтеринг'],
-              ['Частные объекты', 'дома, камины, бани, тандыры'],
+              ['Производство', 'цеха, пекарни, столовые'],
+              ['Частные объекты', 'дома, камины, бани'],
             ].map(([title, text]) => (
               <article key={title}>
                 <Building2 size={23} />
