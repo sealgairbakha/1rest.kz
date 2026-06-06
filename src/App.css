@@ -115,9 +115,10 @@ p {
 h1 {
   margin-bottom: 24px;
   color: var(--ink);
-  font-size: clamp(42px, 7vw, 76px);
-  line-height: 0.96;
+  font-size: 54px;
+  line-height: 1.05;
   letter-spacing: 0;
+  overflow-wrap: break-word;
 }
 
 h2 {
@@ -601,6 +602,10 @@ h3 {
 }
 
 @media (max-width: 920px) {
+  h1 {
+    font-size: 48px;
+  }
+
   .header {
     flex-wrap: wrap;
   }
@@ -673,6 +678,11 @@ h3 {
 }
 
 @media (max-width: 620px) {
+  h1 {
+    font-size: 39px;
+    overflow-wrap: anywhere;
+  }
+
   .header,
   .hero-section,
   .trust-strip,

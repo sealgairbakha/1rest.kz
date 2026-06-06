@@ -22,8 +22,8 @@ import logoDark from './assets/1rest_logo_ForDarkTheme.png'
 import logoLight from './assets/1rest_logo.png'
 import './App.css'
 
-const phone = '+7 700 000 00 00'
-const whatsapp = '77000000000'
+const phone = '+7 777 122 90 87'
+const whatsapp = '77771229087'
 const email = 'info@1rest.kz'
 
 const services = [
@@ -147,7 +147,7 @@ function App() {
         <section className="hero-section">
           <div className="hero-copy">
             <p className="eyebrow">г. Алматы</p>
-            <h1>Чистка вентиляции, дымоходов и кухонных вытяжек</h1>
+            <h1>Чистка вентиляции, производственных и кухонных вытяжек</h1>
             <p className="lead">
               Помогаем ресторанам, кафе, производственным кухням и частным объектам
               поддерживать тягу, чистоту и пожарную безопасность инженерных систем.
